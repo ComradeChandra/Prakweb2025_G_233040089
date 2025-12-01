@@ -2,39 +2,54 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $data['judul']; ?></title>
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/css/style.css"> 
+    <title>Daftar User</title>
+    
+    <style>
+        /* Atur font biar enak dibaca */
+        body { font-family: sans-serif; padding: 20px; }
+        
+        /* Bikin garis tabel nyatu (collapse) & lebar full */
+        table { border-collapse: collapse; width: 100%; }
+        
+        /* Kasih garis pinggir di setiap kotak (sel) */
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        
+        /* Kasih warna abu-abu di judul kolom biar beda */
+        th { background-color: #f2f2f2; }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Daftar Pengguna</h1>
 
-    <a href="<?= BASE_URL; ?>/User/tambah" class="btn">Tambah Data User</a>
-    <br><br>
+    <h3>Daftar Pengguna</h3>
 
-    <table class="user-table">
+    <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Aksi</th>
             </tr>
         </thead>
+        
         <tbody>
-            <?php foreach ($data['users'] as $user): ?>
+            <?php $no = 1; // Mulai nomor urut dari 1 ?>
+            
+            <?php foreach ($data['users'] as $user) : ?>
             <tr>
-                <td><?= htmlspecialchars($user['name']); ?></td>
-                <td><?= htmlspecialchars($user['email']); ?></td>
+                <td><?= $no++; ?></td>
+                
+                <td><?= $user['name']; ?></td> 
+                
+                <td><?= $user['email']; ?></td>
+                
                 <td>
-                    <a href="<?= BASE_URL; ?>/User/ubah/<?= $user['id']; ?>" class="btn-small">Ubah</a>
-                    <a href="<?= BASE_URL; ?>/User/hapus/<?= $user['id']; ?>" class="btn-small" onclick="return confirm('Yakin mau hapus data ini?');">Hapus</a>
-                    <a href="<?= BASE_URL; ?>/User/detail/<?= $user['id']; ?>" class="btn-small">Detail</a>
+                    <a href="<?= BASE_URL; ?>/user/detail/<?= $user['id']; ?>">Detail</a>
                 </td>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach; // Selesai looping, ulang lagi ke atas kalau data masih ada ?>
         </tbody>
     </table>
-</div>
+
 </body>
 </html>

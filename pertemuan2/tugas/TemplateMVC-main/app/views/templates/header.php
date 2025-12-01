@@ -10,5 +10,6 @@
 <nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href="<?= BASE_URL; ?>">MVC PHP</a>
+        <a class="nav-item nav-link" href="<?= BASE_URL; ?>/user">Data Mahasiswa</a>
     </div>
 </nav>

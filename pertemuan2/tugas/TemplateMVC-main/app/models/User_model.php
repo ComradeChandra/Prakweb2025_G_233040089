@@ -1,66 +1,30 @@
 <?php
 
 class User_model {
+    // nama tabel di database
     private $table = 'users';
     private $db;
 
-    public function __construct()
-    {
+    public function __construct() {
+        // pas class dipanggil, langsung instansiasi database wrapper
         $this->db = new Database;
     }
 
-    public function getAllUsers()
-    {
+    // fungsi buat ambil semua data user
+    public function getAllUsers() {
+        // query select semua data dari tabel users
         $this->db->query('SELECT * FROM ' . $this->table);
+        // balikin hasilnya dalam bentuk banyak data (array of assoc)
         return $this->db->resultSet();
     }
 
-    public function getUserById($id)
-    {
+    // fungsi ambil data user berdasarkan id (detail)
+    public function getUserById($id) {
+        // query select pake where id
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+        // bind parameter id biar aman
         $this->db->bind('id', $id);
+        // balikin satu baris data aja
         return $this->db->single();
-    }
-
-    public function tambahDataUser($data)
-    {
-        $query = "INSERT INTO " . $this->table . " (name, email) VALUES (:name, :email)";
-        
-        $this->db->query($query);
-        $this->db->bind('name', $data['name']);
-        $this->db->bind('email', $data['email']);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    }
-
-    public function hapusDataUser($id)
-    {
-        $query = "DELETE FROM " . $this->table . " WHERE id = :id";
-        
-        $this->db->query($query);
-        $this->db->bind('id', $id);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
-    }
-
-    public function ubahDataUser($data)
-    {
-        $query = "UPDATE " . $this->table . " SET 
-                    name = :name, 
-                    email = :email 
-                  WHERE id = :id";
-        
-        $this->db->query($query);
-        $this->db->bind('name', $data['name']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('id', $data['id']);
-
-        $this->db->execute();
-
-        return $this->db->rowCount();
     }
 }
