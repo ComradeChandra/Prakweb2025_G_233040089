@@ -12,7 +12,7 @@ class User extends Controller
     public function detail($id)
     {
         $data["judul"] = "Detail User";
-        $data['user']  = $this->model('User_model')->getUserById($id);
+        $data['user'] = $this->model('User_model')->getUserById($id);
         $this->view('detail', $data); 
     }
 
@@ -25,10 +25,10 @@ class User extends Controller
     public function prosesTambah()
     {
         if ($this->model('User_model')->tambahDataUser($_POST) > 0) {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         } else {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         }
     }
@@ -36,10 +36,10 @@ class User extends Controller
     public function hapus($id)
     {
         if ($this->model('User_model')->hapusDataUser($id) > 0) {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         } else {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         }
     }
@@ -54,10 +54,10 @@ class User extends Controller
     public function prosesUbah()
     {
         if ($this->model('User_model')->ubahDataUser($_POST) > 0) {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         } else {
-            header('Location: ' . BASE_URL . '/User');
+            header('Location: ' . BASE_URL . '/user');
             exit;
         }
     }

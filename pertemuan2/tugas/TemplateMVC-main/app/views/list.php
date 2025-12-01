@@ -22,6 +22,9 @@
 
     <h3>Daftar Pengguna</h3>
 
+    <a href="<?= BASE_URL; ?>/user/tambah" style="display: inline-block; margin-bottom: 10px; background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">+ Tambah Data User</a>
+    <br><br>
+
     <table>
         <thead>
             <tr>
@@ -44,10 +47,14 @@
                 <td><?= $user['email']; ?></td>
                 
                 <td>
-                    <a href="<?= BASE_URL; ?>/user/detail/<?= $user['id']; ?>">Detail</a>
+                    <a href="<?= BASE_URL; ?>/user/detail/<?= $user['id']; ?>" style="color: blue; text-decoration: none; margin-right: 10px;">Detail</a>
+                    
+                    <a href="<?= BASE_URL; ?>/user/ubah/<?= $user['id']; ?>" style="color: green; text-decoration: none; margin-right: 10px;">Ubah</a>
+                    
+                    <a href="<?= BASE_URL; ?>/user/hapus/<?= $user['id']; ?>" style="color: red; text-decoration: none;" onclick="return confirm('Yakin mau menghapus data ini?');">Hapus</a>
                 </td>
             </tr>
-            <?php endforeach; // Selesai looping, ulang lagi ke atas kalau data masih ada ?>
+            <?php endforeach; // Selesai looping ?>
         </tbody>
     </table>
 
