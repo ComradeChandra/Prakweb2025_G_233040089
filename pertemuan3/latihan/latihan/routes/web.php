@@ -13,4 +13,7 @@ Route::get('/', function () {
 Route::get('/posts', [PostController::class, 'index']);
 
 // route ke halaman categories
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']); 
+
+// Route buat liat detail satu postingan (pake slug)
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
